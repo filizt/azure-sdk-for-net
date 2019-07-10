@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Management.Blueprint
         /// <param name='versionId'>
         /// version of the published blueprint.
         /// </param>
-        public static PublishedBlueprint CreateInSubscription(this IPublishedBlueprintsOperations operations, string subscriptionId, string blueprintName, string versionId)
+        public static PublishedBlueprint CreateInSubscription(this IPublishedBlueprintsOperations operations, string subscriptionId, string blueprintName, string versionId, PublishedBlueprint publishedBlueprint = default(PublishedBlueprint))
         {
             var scope = string.Format(Constants.ResourceScopes.SubscriptionScope, subscriptionId);
-            return operations.CreateAsync(scope, blueprintName, versionId).GetAwaiter().GetResult();
+            return operations.CreateAsync(scope, blueprintName, versionId, publishedBlueprint).GetAwaiter().GetResult();
         }
 
         /// <summary>
